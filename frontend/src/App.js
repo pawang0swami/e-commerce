@@ -1,16 +1,24 @@
-
-import './App.css';
-import Head from './Com/Head';
+import "./App.css";
+import Head from "./Com/Head";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-
+import Foot from "./Com/Foot";
+import Sign from "./Com/sign";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
-     <Head/>
-     </Router>
+        <Head />
+        <Routes>
+          <Route path="/" element={<Sign />} />
+          <Route path="/add" element={<Sign />} />
+          <Route path="/update" element={<Sign />} />
+          <Route path="/logout" element={<Sign />} />
+          <Route path="/profile" element={<Sign/>} />
+          <Route path="/sign" element={<Sign />} />
+        </Routes>
+        <Foot />
+      </Router>
     </div>
   );
 }
