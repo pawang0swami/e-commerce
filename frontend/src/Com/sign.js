@@ -6,6 +6,7 @@ const Sign = () => {
 
   const Data = () => {
     console.log(email, password);
+
   };
 
   return (
@@ -56,7 +57,7 @@ const Sign = () => {
               />
             </div>
             <button
-              onClick={Data}
+              onClick={Data} 
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
             >
               Button

@@ -1,6 +1,6 @@
 import "./App.css";
 import Head from "./Com/Head";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";      //routing
 import Foot from "./Com/Foot";
 import Sign from "./Com/sign";
 
