@@ -1,20 +1,23 @@
 const express = require("express");
-const mongoose =require("mongoose")
-const app=express()
-const DB=async()=>{
-  mongoose.connect("mongodb://localhost:27017/e-comm");
-  const pro=new mongoose.Schema({})
-  const pr=mongoose.model('data',pro)
-  const data=await pr.find()
-  // console.log(data)
-}
-DB()
+require("./db/config")
+const User=require("./db/user")
+const cors = require("cors")
 
-app.get("/",(req,R)=>{
-  R.send(dat)
+
+const app=express()
+
+app.use(cors())
+app.use(express.json());
+app.post("/register",async(req,resp)=>{
+     let user2=new User(req.body);
+     let result= await user2.save()
+     resp.send(result)
+     
+
 })
 
 
-app.listen(5007)
+app.listen(5010,()=>{
+  console.log("dfg")
+})
 
-  
