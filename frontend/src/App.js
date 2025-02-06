@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";      
 import Foot from "./Com/Foot";
 import Sign from "./Com/sign";
 import Privatecom from "./Com/privatecom";
+import Login from "./Com/Login";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Route>
 
           <Route path="/sign" element={<Sign />} />
+          <Route path="/login" element={<Login/>}/>
         </Routes>
         <Foot />
       </Router>
