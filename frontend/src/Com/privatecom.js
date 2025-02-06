@@ -6,7 +6,7 @@ const privatecom = () => {
   return (
     
      a?<Outlet/>:<Navigate to="/sign"/>
-   
+     
   )
 }
 

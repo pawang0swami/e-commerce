@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 
 const Sign = () => {
@@ -7,6 +7,17 @@ const Sign = () => {
   const [password, setp] = useState("");
   const nav=useNavigate()
 
+
+
+  useEffect(()=>{
+  
+    const a=localStorage.getItem("user")
+    if (a){
+      nav("/")
+    }
+                      // uper help to not open sign up page when user in found
+  })
+  
   const Data = async() => {
     console.log(email, password,name);
 
@@ -22,7 +33,7 @@ const Sign = () => {
       console.log(result);
       localStorage.setItem("user",JSON.stringify(result))
       if(result){
-      nav("/")}
+      nav("/")} 
   };
 
   return (

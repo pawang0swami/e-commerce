@@ -1,7 +1,16 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 const Head = () => {
+
+  const a=localStorage.getItem("user")
+  const nav=useNavigate()
+ const logout =()=>{
+   localStorage.clear()
+   nav("/sign")
+   
+ }
+
   return (
     <div>
 
@@ -17,10 +26,10 @@ const Head = () => {
       <Link to={"/"}> <h3  > <a className="mr-5 hover:text-white">home</a> </h3></Link>
       <Link to={"/add"}><h3   ><a className="mr-5 hover:text-white">add</a></h3></Link>
       <Link to={"/update"}><h3    > <a className="mr-5 hover:text-white">update</a></h3></Link>
-      <Link to={"/logout"}><h3    > <a className="mr-5 hover:text-white">logout</a></h3></Link>
       <Link to={"/profile"}><h3    > <a className="mr-5 hover:text-white">profile</a></h3></Link>
+      {a? <Link onClick={logout} to={"/sign"}><h3    > <a className="mr-5 hover:text-white">logout</a></h3></Link>:
       <Link to={"/sign"}><h3    > <a className="mr-5 hover:text-white">signup</a></h3></Link>
-
+}
     </nav>
     <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Button
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
