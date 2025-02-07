@@ -8,7 +8,15 @@ const [price,setprice]=React.useState("")
 const [category,setcategory]=React.useState("")
 const [company,setcompany]=React.useState("")
 
+// const [error,seterror]=React.useState(false)
+
 const addp=async()=>{
+
+if(!name||!price||!category||!company){
+    //   seterror(true)
+       return false}
+//      upper help  to not send date database
+
     console.log(name,price,company,category)
     const userid= JSON.parse(localStorage.getItem("user"))._id
     let result = await fetch("http://localhost:5010/addproduct",
@@ -34,7 +42,7 @@ const addp=async()=>{
 
   <div className="mb-5">
     <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">product name</label>
-    <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter product name" required 
+    <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter product name" required  
     onChange={(e)=>setname(e.target.value)} value={name}
     />
   </div>
@@ -46,8 +54,8 @@ const addp=async()=>{
     
   </div>
   <div className="mb-5">
-    <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category</label>
-    <input type="category" id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter product category" required 
+    <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">image link (=category)</label>
+    <input type="category" id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter product image link" required 
     onChange={(e)=>setcategory(e.target.value)} value={category}
     />
     

@@ -42,6 +42,17 @@ app.post("/login",async(req,resp)=>{
       resp.send(result)
     })
            //make the api add product
+
+        app.get("/products", async(req,resq)=>{
+       let products=await Product.find()
+       if (products.length>0){
+        resq.send(products)
+       }else{
+        resq.send("no product found")
+       }
+  })
+   // api for get product
+           
 app.listen(5010,()=>{
   console.log("dfg")
 })
