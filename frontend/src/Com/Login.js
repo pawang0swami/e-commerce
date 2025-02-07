@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -6,6 +6,15 @@ const Login = () => {
 const [email,setEmail]=React.useState("")
 const [password,setPassword]=React.useState("")
 const nav=useNavigate()
+
+useEffect(()=>{
+  
+    const a=localStorage.getItem("user")
+    if (a){
+      nav("/")
+    }
+                      // uper help to not open login {(http/login)} page when user(gmail,pass) in found
+  })
 
 const h=async()=>{
     console.log(email,password)
@@ -27,9 +36,10 @@ let result = await fetch("http://localhost:5010/login",
      }
     }
   return (
-
-<div class="bg-slate-900">
-<form class="max-w-sm mx-auto">
+    // <section className="text-gray-400 bg-gray-900 body-font">
+        // <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
+<div class="bg-slate-900  ">
+<form class="max-w-sm mx-auto pt-28 pb-7 ">
   <div class="mb-5">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
     <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required 
@@ -51,6 +61,7 @@ let result = await fetch("http://localhost:5010/login",
   </button>
 </form>
 </div>
+
   )
 }
 

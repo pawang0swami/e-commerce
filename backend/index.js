@@ -3,11 +3,14 @@ require("./db/config")
 const User=require("./db/user")
 const cors = require("cors")
 
+const Product = require("./db/Product");
+
 
 const app=express()
 
 app.use(cors())
 app.use(express.json());
+
 app.post("/register",async(req,resp)=>{
      let user2=new User(req.body);
      let result= await user2.save()
@@ -33,7 +36,14 @@ app.post("/login",async(req,resp)=>{
 })
     //          help to mach the password and email    select = - not show [passwod]
 
+    app.post("/addproduct",async(req,resp)=>{
+      let pro=new Product(req.body);
+      let result=await pro.save();
+      resp.send(result)
+    })
+           //make the api add product
 app.listen(5010,()=>{
   console.log("dfg")
 })
 
+ 
