@@ -25,6 +25,8 @@ const Head = () => {
     {a? <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
   <Link to={"/"}> <h3  > <a className="mr-5 hover:text-white">home</a> </h3></Link>
       <Link to={"/add"}><h3   ><a className="mr-5 hover:text-white">add</a></h3></Link>
+      <Link to={"/list"}><h3   ><a className="mr-5 hover:text-white">list</a></h3></Link>
+
       <Link to={"/update"}><h3    > <a className="mr-5 hover:text-white">update</a></h3></Link>
       <Link to={"/profile"}><h3    > <a className="mr-5 hover:text-white">profile</a></h3></Link>
        <Link onClick={logout} to={"/sign"}><h3    > <a className="mr-5 hover:text-white">logout({JSON.parse(a).name})</a></h3></Link> </nav>

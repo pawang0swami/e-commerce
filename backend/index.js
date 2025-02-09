@@ -52,9 +52,21 @@ app.post("/login",async(req,resp)=>{
        }
   })
    // api for get product
-           
+
+   app.delete("/product/:id",async(req,res)=>{
+
+     const r=await Product.deleteOne({_id:req.params.id})
+     res.send (r )
+     
+   })
+     
+   app.get("/product/:id",async(req,res)=>{
+     let r=await Product.findOne({_id:req.params.id})
+      res.send(r)
+   })
+
 app.listen(5010,()=>{
-  console.log("dfg")
+  console.log("df")
 })
 
  

@@ -7,6 +7,8 @@ import Privatecom from "./Com/privatecom";
 import Login from "./Com/Login";
 import Add from "./Com/add";
 import Home from "./Com/Home";
+import List from "./Com/List";
+import Update from "./Com/Update";
 
 function App() {
   return (
@@ -17,8 +19,10 @@ function App() {
           
           <Route element={<Privatecom/>}>
           <Route path="/" element={<Home/>} />
+          <Route path="list" element={<List/>} />
+
           <Route path="/add" element={<Add/>} />
-          <Route path="/update" element={<h1>update</h1>} />
+          <Route path="/update/:id" element={<Update/>} />
           {/* <Route path="/logout" element={<h1>asdfgh</h1>} /> */}
           <Route path="/profile" element={<h1>sdfg</h1>} />
           </Route>
