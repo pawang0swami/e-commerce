@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useNavigate, useParams} from "react-router-dom"
 
 const Update = () => {
 
@@ -7,16 +8,43 @@ const [price,setprice]=React.useState("")
 const [category,setcategory]=React.useState("")
 const [company,setcompany]=React.useState("")
 
-const up=async()=>{
-    console.log(name,price,company,category)
+const params=useParams()
+const navigate=useNavigate()
+
+useEffect(()=>{
+    //  console.log(params)
+     getp()
+},[])
+
+const getp=async()=>{
+let r=await fetch(`http://localhost:5010/product/${params.id}`)
+r=await r.json()
+setname(r.name)
+setprice(r.price)
+setcategory(r.category)
+setcompany(r.company)
+
 }
+
+
+const up=async()=>{
+let r=await fetch(`http://localhost:5010/product/${params.id}`,{
+    method:"put",
+    body:JSON.stringify({name,price,company,category}),
+    headers:{"content-type":"application/json"}
+});
+r=await r.json()
+ navigate("/list")
+ console.log(r)
+}
+//      ERROR ERROR
 
 
   return (
     <div>
         <div className="bg-slate-900  ">
 <form className="max-w-sm mx-auto pt-2 pb-7 ">
-<h1 className="dark:text-white mb-20 text-center text-3xl "  >Add product</h1>
+<h1 className="dark:text-white mb-20 text-center text-3xl "  >Edit product</h1>
 
   <div className="mb-5">
     <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">product name</label>

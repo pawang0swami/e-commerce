@@ -65,6 +65,14 @@ app.post("/login",async(req,resp)=>{
       res.send(r)
    })
 
+   app.put("/product/:id", async(req,res)=>{
+     let r=await Product.updateOne(
+      { _id:req.params.id},{
+          $set:req.body
+     })
+     res.send(r)
+   }
+  )
 app.listen(5010,()=>{
   console.log("df")
 })
