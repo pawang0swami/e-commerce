@@ -24,7 +24,7 @@ function App() {
           <Route path="/add" element={<Add/>} />
           <Route path="/update/:id" element={<Update/>} />
           {/* <Route path="/logout" element={<h1>asdfgh</h1>} /> */}
-          <Route path="/profile" element={<h1>sdfg</h1>} />
+          {/* <Route path="/profile" element={<h1>sdfg</h1>} /> */}
           </Route>
 
           <Route path="/sign" element={<Sign />} />
