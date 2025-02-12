@@ -17,7 +17,12 @@ useEffect(()=>{
 },[])
 
 const getp=async()=>{
-let r=await fetch(`http://localhost:5010/product/${params.id}`)
+let r=await fetch(`http://localhost:5010/product/${params.id}`,{
+  headers:{
+    authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+    //product go token   last vidio
+}
+})
 r=await r.json()
 setname(r.name)
 setprice(r.price)
@@ -31,7 +36,12 @@ const up=async()=>{
 let r=await fetch(`http://localhost:5010/product/${params.id}`,{
     method:"put",
     body:JSON.stringify({name,price,company,category}),
-    headers:{"content-type":"application/json"}
+    headers:{"content-type":"application/json",
+      headers:{
+        authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+        //product go token    last vidio
+    }
+    }
 });
 r=await r.json()
  navigate("/list")

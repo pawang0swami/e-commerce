@@ -11,8 +11,6 @@ const Head = () => {
    
  }
 
- 
-
 
   return (
     <div>
@@ -34,17 +32,6 @@ const Head = () => {
       {/* <Link to={"/update"}><h3    > <a className="mr-5 hover:text-white">update</a></h3></Link> */}
       {/* <Link to={"/profile"}><h3    > <a className="mr-5 hover:text-white">profile</a></h3></Link> */}
        <Link onClick={logout} to={"/sign"}><h3    > <a className="mr-5 hover:text-white">logout({JSON.parse(a).name})</a></h3></Link> 
-
-
-
-
-
-
-
-
-
-
-
 
     </nav>
 

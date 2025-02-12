@@ -22,7 +22,12 @@ const s=async(event)=>{
   // console.log(key)
   //   live seach 
   if (key){
-  let r=await fetch(`http://localhost:5010/search/${key}`)
+  let r=await fetch(`http://localhost:5010/search/${key}`,{
+    headers:{
+      authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+      //product go token
+  }
+  })
   r=await r.json()
   // console.log(r)
   if(r){

@@ -17,7 +17,7 @@ if(!name||!price||!category||!company){
        return false}
 //      upper help  to not send date database
 
-    console.log(name,price,company,category)
+    // console.log(name,price,company,category)
     const userid= JSON.parse(localStorage.getItem("user"))._id
     let result = await fetch("http://localhost:5010/addproduct",
         {
@@ -25,12 +25,16 @@ if(!name||!price||!category||!company){
            body: JSON.stringify({ name,price ,company,category,userid}),
                                   //    backend and upper name is must same
             headers:{
-           'Content-Type': 'application/json'
+           'Content-Type': 'application/json',
+           headers:{
+            authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+            //product go token    last vidio
+        }
            },
          })
-    console.log(userid)
+    // console.log(userid)
     result = await result.json()
-    console.log(result);
+    // console.log(result);
     
 }
 

@@ -30,9 +30,11 @@ let result = await fetch("http://localhost:5010/login",
      })
      result=await result.json()
      console.log(result)
-     if(result.name){
-        localStorage.setItem("user",JSON.stringify(result))
-        nav("/")
+     if(result.token){
+      localStorage.setItem("user",JSON.stringify(result.user));
+      localStorage.setItem("token",JSON.stringify(result.token))
+
+      nav("/")
      }
     }
   return (

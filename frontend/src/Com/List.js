@@ -9,13 +9,23 @@ useEffect(()=>{
 },[])
 
 const getp=async()=>{
-    let result = await fetch("http://localhost:5010/products")
+    let result = await fetch("http://localhost:5010/products",{
+        headers:{
+            authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+            //product go token  last vidio
+        }
+    })
      result=await result.json()
      setp(result)
 }
 const del=async(id)=>{
     let result = await fetch(`http://localhost:5010/product/${id}`,{
-        method:"Delete"})
+        method:"Delete",
+        headers:{
+            authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
+            //product go token   last vidio
+        } 
+    })
       result = await result.json()
 if(result){
     getp()
@@ -23,7 +33,7 @@ if(result){
     }
     return (
  
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+<div class="relative  shadow-md sm:rounded-lg ">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
