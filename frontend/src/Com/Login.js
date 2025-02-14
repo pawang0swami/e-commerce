@@ -35,7 +35,7 @@ const Login = () => {
   };
   return (
     // <section className="text-gray-400 bg-gray-900 body-font">
-    // <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
+  
     <div class="bg-slate-900  ">
       <form class="max-w-sm mx-auto pt-28 pb-7 ">
         <div class="mb-5">
