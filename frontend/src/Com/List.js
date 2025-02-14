@@ -28,6 +28,7 @@ const List = () => {
     result = await result.json();
     if (result) {
       getp();
+    
     }
   };
   return (
