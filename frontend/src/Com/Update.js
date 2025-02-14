@@ -37,15 +37,15 @@ let r=await fetch(`http://localhost:5010/product/${params.id}`,{
     method:"put",
     body:JSON.stringify({name,price,company,category}),
     headers:{"content-type":"application/json",
-      headers:{
+    
         authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
         //product go token    last vidio
-    }
+    
     }
 });
 r=await r.json()
- navigate("/list")
- console.log(r)
+ navigate("/")
+//  console.log(r)
 }
 //      ERROR ERROR
 

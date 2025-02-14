@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 
+
+
+
+
 const Add = () => {
 
     
@@ -26,15 +30,17 @@ if(!name||!price||!category||!company){
                                   //    backend and upper name is must same
             headers:{
            'Content-Type': 'application/json',
-           headers:{
+           
             authorization:`bearer ${JSON.parse(localStorage.getItem("token"))}`
             //product go token    last vidio
-        }
+        
            },
          })
     // console.log(userid)
     result = await result.json()
     // console.log(result);
+
+
     
 }
 

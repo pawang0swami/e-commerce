@@ -103,15 +103,14 @@ app.get("/search/:key",verifytoken, async (req, res) => {
 
 function verifytoken(req, resp, next){
   let token=req.headers["authorization"]
-                       //key  . value
+// const {authorization}=req.headers
+  //key  . value
               
   if(token){
 
 
-    
-
-      token=token.split('')[1]
-       console.log(token)
+      token=token.split('bearer ')[1] 
+      //  console.log(token)
            //                 split value [array]
 
   Jwt.verify(token,jwtkey,(err,data)=>{

@@ -40,7 +40,7 @@ if(result){
                 <th scope="col" class="px-6 py-3">
                     Product name
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 hidden sm:block ">
                 company
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -60,11 +60,11 @@ if(result){
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {e.name}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 hidden sm:block">
                     {e.company}
                 </td>
 
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 ">
                    {e.price}
                 </td>
                 <td class="px-4 m-12 py-4 text-center">
