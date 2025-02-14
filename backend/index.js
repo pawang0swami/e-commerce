@@ -10,7 +10,6 @@ const Jwt = require("jsonwebtoken");
 const jwtkey = "e-comm";
 //key (any name ){no body can know}[any name]
 
-
 const app = express();
 
 app.use(cors());
@@ -20,7 +19,7 @@ app.post("/register", async (req, resp) => {
   let user2 = new User(req.body);
   let result = await user2.save();
   result = result.toObject();
-  
+
   delete result.password;
 
   Jwt.sign({ result }, jwtkey, { expiresIn: "100h" }, (err, token) => {
@@ -52,14 +51,14 @@ app.post("/login", async (req, resp) => {
 });
 //          help to mach the password and email    select = - not show [passwod]
 
-app.post("/addproduct",verifytoken, async (req, resp) => {
+app.post("/addproduct", verifytoken, async (req, resp) => {
   let pro = new Product(req.body);
   let result = await pro.save();
   resp.send(result);
 });
 //make the api add product
 
-app.get("/products",verifytoken, async (req, resq) => {
+app.get("/products", verifytoken, async (req, resq) => {
   let products = await Product.find();
   if (products.length > 0) {
     resq.send(products);
@@ -69,18 +68,18 @@ app.get("/products",verifytoken, async (req, resq) => {
 });
 // api for get product
 
-app.delete("/product/:id",verifytoken, async (req, res) => {
+app.delete("/product/:id", verifytoken, async (req, res) => {
   const r = await Product.deleteOne({ _id: req.params.id });
   res.send(r);
 });
 
-app.get("/product/:id",verifytoken, async (req, res) => {
+app.get("/product/:id", verifytoken, async (req, res) => {
   let r = await Product.findOne({ _id: req.params.id });
   res.send(r);
 });
 
-app.put("/product/:id",verifytoken, async (req, res) => {
-  // const 
+app.put("/product/:id", verifytoken, async (req, res) => {
+  // const
   let r = await Product.updateOne(
     { _id: req.params.id },
     {
@@ -90,7 +89,7 @@ app.put("/product/:id",verifytoken, async (req, res) => {
   res.send(r);
 });
 
-app.get("/search/:key",verifytoken, async (req, res) => {
+app.get("/search/:key", verifytoken, async (req, res) => {
   let r = await Product.find({
     $or: [
       { name: { $regex: req.params.key } },
@@ -100,34 +99,28 @@ app.get("/search/:key",verifytoken, async (req, res) => {
   res.send(r);
 });
 
-
-function verifytoken(req, resp, next){
-  let token=req.headers["authorization"]
-// const {authorization}=req.headers
+function verifytoken(req, resp, next) {
+  let token = req.headers["authorization"];
+  // const {authorization}=req.headers
   //key  . value
-              
-  if(token){
 
+  if (token) {
+    token = token.split("bearer ")[1];
+    //  console.log(token)
+    //                 split value [array]
 
-      token=token.split('bearer ')[1] 
-      //  console.log(token)
-           //                 split value [array]
-
-  Jwt.verify(token,jwtkey,(err,data)=>{
-    if(err){
-    resp.status(401).send("wrong token")
-       
-    }else{
-   next()
-    }
-  })
-  }else{
-    resp.send("no token ,in { hearder}")
+    Jwt.verify(token, jwtkey, (err, data) => {
+      if (err) {
+        resp.status(401).send("wrong token");
+      } else {
+        next();
+      }
+    });
+  } else {
+    resp.send("no token ,in { hearder}");
   }
-
 }
-//    middeleware       
-
+//    middeleware
 
 app.listen(5010, () => {
   console.log("df");

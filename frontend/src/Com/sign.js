@@ -1,41 +1,38 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Sign = () => {
   const [name, setn] = useState("");
   const [email, sete] = useState("");
   const [password, setp] = useState("");
-  const nav=useNavigate()
+  const nav = useNavigate();
 
-
-
-  useEffect(()=>{
-  
-    const a=localStorage.getItem("user")
-    if (a){
-      nav("/")
+  useEffect(() => {
+    const a = localStorage.getItem("user");
+    if (a) {
+      nav("/");
     }
-                      // uper help to not open sign up page when user in found
-  })
-  
-  const Data = async() => {
-    console.log(email, password,name);
+    // uper help to not open sign up page when user in found
+  });
 
-    let result = await fetch("http://localhost:5010/register",
-   {
-      method: 'post',
+  const Data = async () => {
+    console.log(email, password, name);
+
+    let result = await fetch("http://localhost:5010/register", {
+      method: "post",
       body: JSON.stringify({ name, email, password }),
-       headers:{
-      'Content-Type': 'application/json'
+      headers: {
+        "Content-Type": "application/json",
       },
-    })
-      result = await result.json()
-      console.log(result);
-      localStorage.setItem("user",JSON.stringify(result.result))
-      localStorage.setItem("token",JSON.stringify(result.token))
+    });
+    result = await result.json();
+    console.log(result);
+    localStorage.setItem("user", JSON.stringify(result.result));
+    localStorage.setItem("token", JSON.stringify(result.token));
 
-      if(result){
-      nav("/")} 
+    if (result) {
+      nav("/");
+    }
   };
 
   return (
@@ -53,7 +50,7 @@ const Sign = () => {
             </p>
           </div> */}
           <div className="lg:w-2/4 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-         {/* <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0"> */}
+            {/* <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0"> */}
 
             <h2 className="text-white text-lg font-medium title-font mb-5">
               Sign Up
@@ -104,7 +101,7 @@ const Sign = () => {
               />
             </div>
             <button
-              onClick={Data} 
+              onClick={Data}
               className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
             >
               Button
@@ -120,6 +117,3 @@ const Sign = () => {
 };
 
 export default Sign;
-
-
- 

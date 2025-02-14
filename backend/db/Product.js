@@ -1,13 +1,11 @@
-const mongoose =require("mongoose")
+const mongoose = require("mongoose");
 
-const s=new mongoose.Schema({
-    name:String,
-    price:String,
-    category:String,
-    userid:String,
-    company:String
+const s = new mongoose.Schema({
+  name: String,
+  price: String,
+  category: String,
+  userid: String,
+  company: String,
+});
 
-})
-
-module.exports=mongoose.model("products",s)
-
+module.exports = mongoose.model("products", s);

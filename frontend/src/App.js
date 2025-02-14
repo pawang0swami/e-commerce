@@ -1,6 +1,6 @@
 import "./App.css";
 import Head from "./Com/Head";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";      //routing
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; //routing
 import Foot from "./Com/Foot";
 import Sign from "./Com/sign";
 import Privatecom from "./Com/privatecom";
@@ -16,19 +16,18 @@ function App() {
       <Router>
         <Head />
         <Routes>
-          
-          <Route element={<Privatecom/>}>
-          <Route path="/" element={<Home/>} />
-          <Route path="list" element={<List/>} />
+          <Route element={<Privatecom />}>
+            <Route path="/" element={<Home />} />
+            <Route path="list" element={<List />} />
 
-          <Route path="/add" element={<Add/>} />
-          <Route path="/update/:id" element={<Update/>} />
-          {/* <Route path="/logout" element={<h1>asdfgh</h1>} /> */}
-          {/* <Route path="/profile" element={<h1>sdfg</h1>} /> */}
+            <Route path="/add" element={<Add />} />
+            <Route path="/update/:id" element={<Update />} />
+            {/* <Route path="/logout" element={<h1>asdfgh</h1>} /> */}
+            {/* <Route path="/profile" element={<h1>sdfg</h1>} /> */}
           </Route>
 
           <Route path="/sign" element={<Sign />} />
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Foot />
       </Router>
